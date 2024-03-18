@@ -1,1 +1,2 @@
-* Visual testing platform *
+# Visual testing platform
+
