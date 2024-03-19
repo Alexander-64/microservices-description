@@ -1,0 +1,39 @@
+@startuml
+
+package "SDK" {
+  [Playwright]
+  
+
+
+
+}
+
+[Browser extension]
+
+
+package "Server" {
+  
+  [Rendering Service]
+  [Core] #Yellow
+  [Comparison Service ML]
+  [Reporting Service]
+
+  [Core] --> [Rendering Service]
+  [Core] --> [Comparison Service ML]
+  [Core] --> [Reporting Service]
+  [Core] --> Images
+
+  note right of Core: business logic
+
+  database "Images" {
+
+  }
+}
+
+
+[Rendering Service] --> [SDK]
+[Rendering Service] --> [Browser extension]
+
+[Personal Cabinet]
+
+@enduml
