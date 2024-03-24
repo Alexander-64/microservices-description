@@ -1,39 +1,38 @@
 @startuml
 
-package "SDK" {
-  [Playwright]
-  
 
-
-
-}
-
-[Browser extension]
-
+left to right direction
 
 package "Server" {
-  
-  [Rendering Service]
-  [Core] #Yellow
-  [Comparison Service ML]
-  [Reporting Service]
 
-  [Core] --> [Rendering Service]
-  [Core] --> [Comparison Service ML]
-  [Core] --> [Reporting Service]
-  [Core] --> Images
+  [Facade] 
+  [API Gateway]
+  [Rendering Service]
+  [Core]
+  [Comparison Service]
+  [Reporting Service]
+  [Facade] --> [API Gateway]
+  [API Gateway] --> [Rendering Service]
+  [API Gateway] -> [Core]
+  [API Gateway] --> [Comparison Service]
+  [API Gateway] --> [Reporting Service]
+  [API Gateway] --> Database
 
   note right of Core: business logic
 
-  database "Images" {
+  database "Database" {
 
   }
 }
 
+component Client {
+  port TestingTool
+  port BrowserExtension
+}
 
-[Rendering Service] --> [SDK]
-[Rendering Service] --> [Browser extension]
-
-[Personal Cabinet]
+[Facade] --> TestingTool
+[Facade] --> BrowserExtension
+[Facade] --> [User Interface]
 
 @enduml
+
