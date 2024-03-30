@@ -1,0 +1,10 @@
+@startuml
+autonumber
+  Client -> Facade:  Request for test result
+  note over Client: User logged in
+  Facade -> Core:  Forward request
+  Core -> Database: Request for test result
+  Database -> Core: response
+  Core --> Client: send test result
+
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+autonumber
+
+
+Client -> Facade:  Request with image
+
+Facade -> Core:  Forward request
+
+  Core -> Database: Does image exist
+  Database -> Core: response
+
+alt Server has no a reference,  first time execution
+
+  Core -> Database: Save image
+
+
+else Server has a reference, not first time execution4
+  Core -> RenderingService: Render image
+  RenderingService -> Core: Send image
+  Core -> Database: Save image
+  Core -> Database: Get reference image
+  Core -> ComparisonService: Send actual and reference images for comparison
+  ComparisonService -> Core: Send a result
+  Core -> Database: Save a result
+end
+
+
+@enduml
