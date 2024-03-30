@@ -25,7 +25,6 @@ package "Server" {
 
 component Client {
   port TestingTool
-  port BrowserExtension
 }
 
 [Facade] --> TestingTool
