@@ -10,12 +10,10 @@ package "Server" {
   [Rendering Service]
   [Core]
   [Comparison Service]
-  [Reporting Service]
   [Facade] --> [API Gateway]
   [API Gateway] --> [Rendering Service]
   [API Gateway] -> [Core]
   [API Gateway] --> [Comparison Service]
-  [API Gateway] --> [Reporting Service]
   [API Gateway] --> Database
 
   note right of Core: business logic
